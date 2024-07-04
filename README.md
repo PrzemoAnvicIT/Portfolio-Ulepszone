@@ -3,6 +3,7 @@ Instalacja i Uruchomienie
     Klonowanie repozytorium
 
 git clone https://github.com/PrzemoAnvicIT/Portfolio-Ulepszone
+
 cd portfolio
 
 Instalacja zależności
