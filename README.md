@@ -2,10 +2,7 @@ Instalacja i Uruchomienie
 
     Klonowanie repozytorium
 
-git clone https://github.com/twoj-uzytkownik/portfolio.git
-cd portfolio
-
-git clone https://github.com/twoj-uzytkownik/portfolio.git
+git clone https://github.com/PrzemoAnvicIT/Portfolio-Ulepszone
 cd portfolio
 
 Instalacja zależności
