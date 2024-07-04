@@ -12,13 +12,13 @@ Upewnij się, że masz zainstalowanego Pythona 3.6+ oraz pip. Następnie zainsta
     pip install Flask SQLAlchemy
 
 Inicjalizacja bazy danych
-Uruchom skrypt inicjalizujący bazę danych:
+Uruchom skrypt inicjalizujący bazę danych (tylko za pierwszym uruchomieniem):
 
-python init_db.py
+    python init_db.py
 
 Uruchomienie aplikacji
 
-python app.py
+    python app.py
 
 Aplikacja będzie dostępna pod adresem http://127.0.0.1:5000/
 
