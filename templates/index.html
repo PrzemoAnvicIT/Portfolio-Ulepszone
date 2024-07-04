@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block title %}Portfolio{% endblock %}
+{% block content %}
+<header class="header">
+    <nav class="header__nav main-nav">
+        <ul class="main-nav__list main-list">
+            <li class="main-list__item list-item">
+                <a class="list-item__link" href="#home">STRONA DOMOWA</a>
+            </li>
+            <li class="main-list__item list-item">
+                <a class="list-item__link" href="#about">O MNIE</a>
+            </li>
+            <li class="main-list__item list-item">
+                <a class="list-item__link" href="#skills">MOJE UMIEJĘTNOŚCI</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+    <section class="main__home home" id="home">
+        <h1 class="home__title">IMIĘ NAZWISKO</h1>
+        <p class="home__subtitle">TWÓRCA WWW, PROGRAMISTA PYTHON</p>
+    </section>
+    <section class="main__about about" id="about">
+        <h2 class="about__title">O MNIE</h2>
+        <div class="about__info info-block">
+            <p class="info-block__text">{{ content.about_me }}</p>
+            <img class="info-block__img" src="{{ url_for('static', filename='img/profile.png') }}" alt="me" width="250" height="250">
+        </div>
+    </section>
+    <section class="main__skills skills" id="skills">
+        <h2 class="skills__title">MOJE UMIEJĘTNOŚCI</h2>
+        <ul class="skills__list skills-list">
+            {% for skill in skills %}
+            <li class="skills-list__skill skill" data-image="{{ url_for('static', filename='img/' ~ skill.image) }}" data-link="https://github.com/yourusername/{{ skill.name }}-project">
+                <img class="skill__img" src="{{ url_for('static', filename='img/' ~ skill.image) }}" alt="{{ skill.name }}" width="150" height="150">
+                <span class="skill__info">{{ skill.info }}</span>
+                <button class="skill__button" onclick="showProject(this)">SHOW PROJECT</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+  </section>
+  <!-- Feedback form -->
+  <section class="main__feedback feedback" id="feedback">
+    <h2 class="feedback__title">FEEDBACK</h2>
+    <form action="" method="POST" class="feedback__form form">
+      <label for="email">
+        <input type="email" class="form__input" name="email" id="email" placeholder="Wyślij e-mail" required>
+      </label>
+      <label for="text">
+        <textarea name="text" class="form__input" id="text" cols="70" rows="10" required placeholder="Comment"></textarea>
+      </label>
+      <button class="form__button" type="submit">WYŚLIJ</button>
+    </form>
+  </section>    
+</main>
+
+<!-- Project Modal -->
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="projectImg" src="" alt="project" width="500">
+        <a id="projectLink" href="" target="_blank">Otwórz w GitHub</a>
+    </div>
+</div>
+
+<script>
+function showProject(button) {
+    var skillElement = button.parentElement;
+    var projectModal = document.getElementById('projectModal');
+    var projectImg = document.getElementById('projectImg');
+    var projectLink = document.getElementById('projectLink');
+
+    projectImg.src = skillElement.getAttribute('data-image');
+    projectLink.href = skillElement.getAttribute('data-link');
+
+    projectModal.style.display = 'block';
+}
+
+function closeModal() {
+    var projectModal = document.getElementById('projectModal');
+    projectModal.style.display = 'none';
+}
+
+// Close modal when clicking outside of the modal content
+window.onclick = function(event) {
+    var projectModal = document.getElementById('projectModal');
+    if (event.target == projectModal) {
+        projectModal.style.display = 'none';
+    }
+}
+</script>
+{% endblock %}
