@@ -12,6 +12,7 @@ Upewnij się, że masz zainstalowanego Pythona 3.6+ oraz pip. Następnie zainsta
     pip install Flask SQLAlchemy
 
 Inicjalizacja bazy danych
+
 Uruchom skrypt inicjalizujący bazę danych (tylko za pierwszym uruchomieniem):
 
     python init_db.py
