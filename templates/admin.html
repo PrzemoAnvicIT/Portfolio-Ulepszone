@@ -1,21 +1,23 @@
 {% extends 'base.html' %}
 {% block title %}Admin Panel{% endblock %}
 {% block content %}
-<h2>Admin Panel</h2>
-<form method="POST" enctype="multipart/form-data">
-    <h3>About Me</h3>
-    <textarea name="about_me" rows="5" cols="50">{{ content.about_me }}</textarea>
-    <h3>Skills</h3>
-    {% for skill in skills %}
-    <h4>{{ skill.name }}</h4>
-    <label for="{{ skill.name }}_info">Info:</label>
-    <input type="text" id="{{ skill.name }}_info" name="{{ skill.name }}_info" value="{{ skill.info }}">
-    <br>
-    <label for="{{ skill.name }}_image">Image:</label>
-    <input type="file" id="{{ skill.name }}_image" name="{{ skill.name }}_image">
-    <br><br>
-    {% endfor %}
-    <button type="submit">Save Changes</button>
-</form>
-<a href="{{ url_for('logout') }}">Logout</a>
+<div class="admin-panel">
+    <h2>Admin Panel</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <h3>About Me</h3>
+        <textarea name="about_me" rows="5" cols="50">{{ content.about_me }}</textarea>
+        <h3>Skills</h3>
+        {% for skill in skills %}
+        <h4>{{ skill.name }}</h4>
+        <label for="{{ skill.name }}_info">Info:</label>
+        <input type="text" id="{{ skill.name }}_info" name="{{ skill.name }}_info" value="{{ skill.info }}">
+        <br>
+        <label for="{{ skill.name }}_image">Image:</label>
+        <input type="file" id="{{ skill.name }}_image" name="{{ skill.name }}_image">
+        <br><br>
+        {% endfor %}
+        <button type="submit">Save Changes</button>
+    </form>
+    <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+</div>
 {% endblock %}
