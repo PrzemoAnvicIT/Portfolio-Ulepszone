@@ -9,7 +9,7 @@ cd portfolio
 Instalacja zależności
 Upewnij się, że masz zainstalowanego Pythona 3.6+ oraz pip. Następnie zainstaluj zależności:
     
-    pip install Flask SQLAlchemy
+    pip install Flask SQLAlchemy flask_sqlalchemy
 
 Inicjalizacja bazy danych
 
