@@ -7,7 +7,11 @@ from functools import wraps
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 app.config['UPLOAD_FOLDER'] = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static', 'img')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'data/content.db')
+# Ensure the data directory exists
+data_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'data')
+os.makedirs(data_dir, exist_ok=True)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(data_dir, 'content.db')
 db.init_app(app)
 
 def login_required(f):
